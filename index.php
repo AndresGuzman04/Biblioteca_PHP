@@ -70,7 +70,7 @@ $conexion->desconectar();
                             </div>
 
                             <button type="submit" class="btn btn-primary">Ingresar</button>
-
+                            <p>¿No tienes una cuenta? <a href="registro.php">Regístrate aquí</a></p>
                             </form>
                             
                             

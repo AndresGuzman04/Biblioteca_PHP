@@ -28,6 +28,37 @@ class Login{
             return false;
         }
     }
+
+    public function registrar($usuario, $password) {
+        try {
+            // Verificar si el usuario ya existe
+            $queryVerificar = "SELECT * FROM usuario WHERE usuario = :usuario";
+            $pdo = $this->conexion->getConnection();
+            $statementVerificar = $pdo->prepare($queryVerificar);
+            $statementVerificar->bindParam(':usuario', $usuario);
+            $statementVerificar->execute();
+
+            if ($statementVerificar->rowCount() > 0) {
+                return "El usuario ya existe.";
+            }
+
+            // Insertar nuevo usuario
+            $query = "INSERT INTO usuario (usuario, password) VALUES (:usuario, :password)";
+            $statement = $pdo->prepare($query);
+            $statement->bindParam(':usuario', $usuario);
+            $statement->bindParam(':password', $password);
+
+            if ($statement->execute()) {
+                return "Usuario registrado con éxito.";
+            } else {
+                return "Error al registrar el usuario.";
+            }
+        } catch (PDOException $e) {
+            echo "Error en el registro: " . $e->getMessage();
+            return false;
+        }
+    }
+    
 }
 
 ?>
