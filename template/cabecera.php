@@ -22,7 +22,7 @@ if ($_SESSION['usuario']===null) {
   </head>
   <body>
 
-    <?php $url="https://bibliotecaphp-production.up.railway.app"."/Biblioteca_PHP" ?>
+    <?php $url="https://".$_SERVER['HTTP_HOST']."/Biblioteca_PHP" ?>
     
     <nav class="navbar navbar-expand navbar-light bg-light">
         <div class="nav navbar-nav">

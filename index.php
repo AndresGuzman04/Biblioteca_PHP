@@ -1,14 +1,14 @@
 <?php
 
-session_start();
-include_once 'bd.php';
-include_once 'login.php';
+require_once 'bd.php';
 
-$host="autorack.proxy.rlwy.net";
-$dbname="railway";
-$usuario="root";
-$contrasena="UsqVZvzYVymunoQimGcgKcqOYMVCVmNw";
-$conexion = new ConexionPDO($host, $dbname, $usuario, $contrasena);
+$host = getenv('MYSQLHOST');
+$db = getenv('MYSQLDATABASE');
+$user = getenv('MYSQLUSER');
+$password = getenv('MYSQLPASSWORD');
+$port = getenv('MYSQLPORT');
+
+$conexion = new ConexionPDO($host, $db, $user, $password, $port);
 $conexion->conectar();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

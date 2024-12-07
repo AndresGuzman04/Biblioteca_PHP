@@ -1,48 +1,43 @@
-<?php 
+<?php
 
-class ConexionPDO{
+class ConexionPDO {
 
     private $host;
     private $db;
     private $user;
     private $password;
+    private $port;
     public $conexion;
 
-    public function __construct($host, $db, $user, $password)
-    {
+    public function __construct($host, $db, $user, $password, $port) {
         $this->host = $host;
         $this->db = $db;
         $this->user = $user;
         $this->password = $password;
+        $this->port = $port;
     }
 
-    public function conectar(){
+    public function conectar() {
         try {
-            $opciones = array (
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-            );
             $this->conexion = new PDO(
-                'mysql:host='.$this->host.';dbname='.$this->db,
+                "mysql:host={$this->host};port={$this->port};dbname={$this->db}",
                 $this->user,
                 $this->password,
-                $opciones
+                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
             );
         } catch (PDOException $e) {
-            echo "ERROR DE CONEXION: ".$e->getMessage();
+            echo "Error de conexión: " . $e->getMessage();
             die();
         }
     }
 
-    public function getConnection(){
-        return $this->conexion;
-    }
-
-    public function desconectar(){
+    public function desconectar() {
         $this->conexion = null;
-        #echo "Base de datos desconetada";
     }
-
 }
+?>
+
+
 
 
 $host="autorack.proxy.rlwy.net";
