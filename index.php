@@ -4,10 +4,10 @@ session_start();
 include_once 'bd.php';
 include_once 'login.php';
 
-$host="localhost";
-$dbname="practica_crud";
+$host="autorack.proxy.rlwy.net";
+$dbname="railway";
 $usuario="root";
-$contrasena="";
+$contrasena="UsqVZvzYVymunoQimGcgKcqOYMVCVmNw";
 $conexion = new ConexionPDO($host, $dbname, $usuario, $contrasena);
 $conexion->conectar();
 

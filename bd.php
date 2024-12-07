@@ -44,9 +44,10 @@ class ConexionPDO{
 
 }
 
-$host="localhost";
-$db="practica_crud";
+
+$host="autorack.proxy.rlwy.net";
+$db="railway";
 $user="root";
-$password="";
+$password="UsqVZvzYVymunoQimGcgKcqOYMVCVmNw";
 
 ?>
